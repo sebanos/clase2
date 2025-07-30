@@ -1,0 +1,93 @@
+@namespace TaskFlowPro.Web.Components.UI
+
+<div class="@GetContainerClasses()" @attributes="AdditionalAttributes">
+    <div class="@GetIconContainerClasses()">
+        <i class="@GetIconClasses()"></i>
+    </div>
+    
+    <h3 class="@GetTitleClasses()">@Title</h3>
+    
+    @if (!string.IsNullOrEmpty(Description))
+    {
+        <p class="@GetDescriptionClasses()">@Description</p>
+    }
+    
+    @if (ChildContent != null)
+    {
+        @ChildContent
+    }
+</div>
+
+@code {
+    [Parameter] public string Icon { get; set; } = "fas fa-inbox";
+    [Parameter] public string Title { get; set; } = "No items found";
+    [Parameter] public string? Description { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public EmptyStateSize Size { get; set; } = EmptyStateSize.Medium;
+    [Parameter] public bool IsAnimated { get; set; } = true;
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    public enum EmptyStateSize { Small, Medium, Large }
+
+    private string GetContainerClasses()
+    {
+        var baseClasses = "text-center";
+        var paddingClasses = Size switch
+        {
+            EmptyStateSize.Small => "py-8",
+            EmptyStateSize.Large => "py-16",
+            _ => "py-12"
+        };
+        
+        var animationClasses = IsAnimated ? "animate-fadeInUp" : "";
+        
+        return $"{baseClasses} {paddingClasses} {animationClasses}";
+    }
+
+    private string GetIconContainerClasses()
+    {
+        var baseClasses = "mx-auto mb-4 rounded-full flex items-center justify-center";
+        
+        var sizeClasses = Size switch
+        {
+            EmptyStateSize.Small => "w-12 h-12",
+            EmptyStateSize.Large => "w-20 h-20",
+            _ => "w-16 h-16"
+        };
+        
+        var colorClasses = "bg-muted/20";
+        var animationClasses = IsAnimated ? "hover:bg-muted/30 transition-colors duration-200" : "";
+        
+        return $"{baseClasses} {sizeClasses} {colorClasses} {animationClasses}";
+    }
+
+    private string GetIconClasses()
+    {
+        var sizeClasses = Size switch
+        {
+            EmptyStateSize.Small => "text-lg",
+            EmptyStateSize.Large => "text-2xl",
+            _ => "text-xl"
+        };
+        
+        return $"{Icon} {sizeClasses} text-muted-foreground";
+    }
+
+    private string GetTitleClasses()
+    {
+        var sizeClasses = Size switch
+        {
+            EmptyStateSize.Small => "text-base",
+            EmptyStateSize.Large => "text-xl",
+            _ => "text-lg"
+        };
+        
+        return $"{sizeClasses} font-medium text-muted-foreground mb-2";
+    }
+
+    private string GetDescriptionClasses()
+    {
+        return "text-sm text-muted-foreground max-w-md mx-auto";
+    }
+}

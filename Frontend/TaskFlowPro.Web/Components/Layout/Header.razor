@@ -1,0 +1,102 @@
+@using TaskFlowPro.Web.Services
+@using TaskFlowPro.Web.Components.UI
+@namespace TaskFlowPro.Web.Components.Layout
+@inherits HeaderBase
+
+<header class="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center gap-3 group cursor-pointer" @onclick="() => UIState.NavigateTo(GetDefaultView())">
+            <div class="logo-container">
+                <div class="logo-icon"></div>
+            </div>
+            <h1 class="logo-text">TaskFlow Pro</h1>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="hidden md:flex items-center gap-2">
+            @foreach (var (item, index) in GetNavigationItems().Select((item, i) => (item, i)))
+            {
+                <Button Variant="@(IsActiveView(item.View) ? Button.ButtonVariant.Primary : Button.ButtonVariant.Ghost)"
+                        OnClick="() => UIState.NavigateTo(item.View)"
+                        class="@GetNavButtonClasses(item.View)"
+                        Icon="@item.Icon">
+                    @item.Label
+                </Button>
+            }
+        </nav>
+
+        <!-- User Menu -->
+        @if (UIState.CurrentUser != null)
+        {
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-2">
+                    <Badge Variant="@GetRoleBadgeVariant(UIState.CurrentUser.Role)" 
+                           IsAnimated="true">
+                        @GetRoleDisplayName(UIState.CurrentUser.Role)
+                    </Badge>
+                </div>
+                
+                <div class="relative">
+                    <Button Variant="Button.ButtonVariant.Ghost"
+                            OnClick="ToggleUserMenu"
+                            class="relative h-10 w-10 rounded-full hover:bg-primary/10 hover:scale-105 transition-all duration-200 p-0">
+                        <Avatar Initials="@GetUserInitials()"
+                                Size="Avatar.AvatarSize.Medium"
+                                ShowOnlineIndicator="true"
+                                IsOnline="true" />
+                    </Button>
+
+                    @if (ShowUserMenu)
+                    {
+                        <div class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg border animate-scaleIn z-50">
+                            <div class="p-4 border-b">
+                                <p class="text-sm font-medium">@UIState.CurrentUser.FirstName @UIState.CurrentUser.LastName</p>
+                                <p class="text-xs text-muted-foreground">@UIState.CurrentUser.Email</p>
+                                <Badge Variant="@GetRoleBadgeVariant(UIState.CurrentUser.Role)" 
+                                       Size="Badge.BadgeSize.Small"
+                                       class="mt-1">
+                                    @GetRoleDisplayName(UIState.CurrentUser.Role)
+                                </Badge>
+                            </div>
+                            <div class="p-2">
+                                <Button Variant="Button.ButtonVariant.Ghost"
+                                        OnClick="() => { ShowUserMenu = false; }"
+                                        Icon="fas fa-cog"
+                                        class="w-full justify-start">
+                                    Settings
+                                </Button>
+                                <Button Variant="Button.ButtonVariant.Ghost"
+                                        OnClick="HandleLogout"
+                                        Icon="fas fa-sign-out-alt"
+                                        class="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50">
+                                    Log out
+                                </Button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden border-t bg-white/90 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-2">
+            <div class="flex gap-1 overflow-x-auto">
+                @foreach (var item in GetNavigationItems())
+                {
+                    <Button Variant="@(IsActiveView(item.View) ? Button.ButtonVariant.Primary : Button.ButtonVariant.Ghost)"
+                            Size="Button.ButtonSize.Small"
+                            OnClick="() => UIState.NavigateTo(item.View)"
+                            Icon="@item.Icon"
+                            class="whitespace-nowrap">
+                        @item.Label
+                    </Button>
+                }
+            </div>
+        </div>
+    </div>
+</header>
+
+

@@ -1,0 +1,58 @@
+@using TaskFlowPro.Web.Services
+@using TaskFlowPro.Web.Components.UI
+@namespace TaskFlowPro.Web.Features.Tasks.Components
+@inherits TaskListViewBase
+
+@*
+ESTUDIANTE: Vista de lista de tareas
+
+TAREA: Diseñar y implementar la lista de tareas usando los componentes UI disponibles
+
+COMPONENTES DISPONIBLES:
+- <Card> - Para cada tarea (o usar TaskCard)
+- <Badge> - Para mostrar estado y prioridad
+- <Button> - Para acciones (Create, Edit, Delete, Complete)
+- <EmptyState> - Cuando no hay tareas
+
+DATOS DISPONIBLES en 'tasks':
+- task.Title, task.Description
+- task.Status (usar GetStatusBadgeVariant() y GetStatusDisplayName())
+- task.Priority (usar GetPriorityBadgeVariant())
+- task.AssignedTo (usar GetAssignedUserName())
+- task.CreatedAt (usar GetTimeAgo())
+- task.Id
+
+MÉTODOS DISPONIBLES:
+- GetTitle() - título dinámico según contexto
+- GetSubtitle() - subtítulo dinámico
+- IsTeamView - determina si es vista de equipo
+- CanCreateTasks() - verifica permisos
+- GetStatusBadgeVariant(status) - color del badge de estado
+- GetStatusDisplayName(status) - nombre amigable del estado
+- GetPriorityBadgeVariant(priority) - color del badge de prioridad
+- GetAssignedUserName(userId) - nombre del usuario asignado
+- GetTimeAgo(date) - tiempo relativo
+- HandleCreateTask() - crear nueva tarea
+- HandleEditTask(taskId) - editar tarea
+- HandleDeleteTask(taskId) - eliminar tarea
+- HandleCompleteTask(taskId) - marcar como completada
+
+ESTRUCTURA SUGERIDA:
+1. Header con título dinámico y botón "Create Task" (si CanCreateTasks())
+2. Grid/lista de tareas usando TaskCard o Card
+3. EmptyState cuando tasks.Any() es false
+
+TODO: ESTUDIANTE - Implementar el diseño de la lista de tareas aquí
+*@
+
+<div class="p-6">
+    <h1 class="text-2xl font-bold mb-6">@GetTitle()</h1>
+
+    @* TODO: ESTUDIANTE - Implementar lista de tareas aquí *@
+    <p class="text-gray-600">
+        Implementar lista de tareas usando componentes Card/TaskCard, Badge y Button
+    </p>
+</div>
+
+
+

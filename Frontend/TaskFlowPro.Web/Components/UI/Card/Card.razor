@@ -1,0 +1,24 @@
+@namespace TaskFlowPro.Web.Components.UI
+@inherits CardBase
+
+<div class="@GetCardClasses()" @attributes="AdditionalAttributes">
+    @if (Header != null)
+    {
+        <div class="@GetHeaderClasses()">
+            @Header
+        </div>
+    }
+    
+    <div class="@GetContentClasses()">
+        @ChildContent
+    </div>
+    
+    @if (Footer != null)
+    {
+        <div class="@GetFooterClasses()">
+            @Footer
+        </div>
+    }
+</div>
+
+

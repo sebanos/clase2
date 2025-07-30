@@ -1,0 +1,53 @@
+@using TaskFlowPro.Web.Services
+@using TaskFlowPro.Web.Features.Auth.Components
+@using TaskFlowPro.Web.Features.Tasks.Components
+@using TaskFlowPro.Web.Features.Users.Components
+@using TaskFlowPro.Web.Features.Teams.Components
+@namespace TaskFlowPro.Web.Components.Layout
+@inherits AppRouterBase
+
+@if (UIState.CurrentUser == null)
+{
+    <!-- Authentication Flow -->
+    <AuthFlow />
+}
+else
+{
+    <!-- Main Application -->
+    @switch (UIState.CurrentView)
+    {
+        case "users":
+            <UserListView />
+            break;
+            
+        case "user-form":
+            <UserFormView />
+            break;
+            
+        case "teams":
+            <TeamListView />
+            break;
+            
+        case "team-form":
+            <TeamFormView />
+            break;
+            
+        case "my-tasks":
+            <TaskListView IsTeamView="false" />
+            break;
+            
+        case "team-tasks":
+            <TaskListView IsTeamView="true" />
+            break;
+            
+        case "task-form":
+            <TaskFormView />
+            break;
+            
+        default:
+            <TaskListView IsTeamView="false" />
+            break;
+    }
+}
+
+

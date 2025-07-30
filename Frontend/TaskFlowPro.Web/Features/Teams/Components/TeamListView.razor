@@ -1,0 +1,44 @@
+@using TaskFlowPro.Web.Services
+@using TaskFlowPro.Web.Components.UI
+@namespace TaskFlowPro.Web.Features.Teams.Components
+@inherits TeamListViewBase
+
+@*
+ESTUDIANTE: Vista de lista de equipos
+
+TAREA: Diseñar y implementar la lista de equipos usando los componentes UI disponibles
+
+COMPONENTES DISPONIBLES:
+- <Card> - Para cada equipo
+- <Button> - Para acciones (Create, Edit, Delete, View Tasks, View Members)
+- <EmptyState> - Cuando no hay equipos
+
+DATOS DISPONIBLES en 'teams':
+- team.Name, team.Description
+- team.LeaderId (usar GetTeamLeaderName())
+- team.CreatedAt (usar GetTimeAgo())
+- team.Id
+
+MÉTODOS DISPONIBLES:
+- GetTeamLeaderName(leaderId) - para obtener nombre del líder
+- GetTimeAgo(createdAt) - para tiempo relativo
+- HandleCreateTeam() - para botón crear
+- HandleEditTeam(teamId) - para botón editar
+- HandleDeleteTeam(teamId) - para botón eliminar
+- HandleViewTasks(teamId) - para ver tareas
+- HandleViewMembers(teamId) - para ver miembros
+
+TODO: ESTUDIANTE - Implementar el diseño de la lista de equipos aquí
+*@
+
+<div class="p-6">
+    <h1 class="text-2xl font-bold mb-6">Teams Management</h1>
+
+    @* TODO: ESTUDIANTE - Implementar lista de equipos aquí *@
+    <p class="text-gray-600">
+        Implementar lista de equipos usando componentes Card y Button
+    </p>
+</div>
+
+
+

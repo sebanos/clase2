@@ -1,0 +1,20 @@
+﻿@namespace TaskFlowPro.Web.Components.UI
+@inherits ButtonBase
+
+<button type="@Type"
+        class="@GetButtonClasses()"
+        disabled="@(IsDisabled || IsLoading)"
+        @onclick="HandleClick"
+        @attributes="AdditionalAttributes">
+
+    @if (IsLoading)
+    {
+        <i class="fas fa-spinner fa-spin mr-2"></i>
+    }
+    else if (!string.IsNullOrEmpty(Icon))
+    {
+        <i class="@Icon mr-2"></i>
+    }
+
+    @ChildContent
+</button>

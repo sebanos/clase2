@@ -1,0 +1,29 @@
+@namespace TaskFlowPro.Web.Components.UI
+@inherits LoadingSpinnerBase
+
+<div class="@GetContainerClasses()" @attributes="AdditionalAttributes">
+    @if (ShowOverlay)
+    {
+        <div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center">
+            <div class="@GetSpinnerContainerClasses()">
+                @RenderSpinner()
+                @if (!string.IsNullOrEmpty(Message))
+                {
+                    <p class="mt-4 text-sm text-muted-foreground animate-pulse">@Message</p>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="@GetInlineContainerClasses()">
+            @RenderSpinner()
+            @if (!string.IsNullOrEmpty(Message))
+            {
+                <span class="ml-2 text-sm text-muted-foreground">@Message</span>
+            }
+        </div>
+    }
+</div>
+
+

@@ -1,0 +1,52 @@
+@using TaskFlowPro.Web.Services
+@using TaskFlowPro.Web.Components.UI
+@namespace TaskFlowPro.Web.Features.Tasks.Components
+@inherits TaskCardBase
+
+@*
+ESTUDIANTE: Componente de tarjeta de tarea
+
+TAREA: Diseñar y implementar una tarjeta individual para mostrar una tarea
+
+COMPONENTES DISPONIBLES:
+- <Badge> - Para estado y prioridad
+- <Button> - Para acciones (Edit, Delete)
+
+PARÁMETROS DISPONIBLES:
+- Task - objeto con Title, Description, Status, Priority, etc.
+- Index - índice para animaciones
+- OnEdit - callback para editar
+- OnDelete - callback para eliminar
+- OnStatusToggle - callback para cambiar estado
+- CanEdit - permisos de edición
+- AssignedUser - usuario asignado
+- IsTeamView - vista de equipo
+
+MÉTODOS DISPONIBLES:
+- GetTaskCardClasses() - clases CSS para la tarjeta
+- GetCheckboxClasses() - clases CSS para checkbox
+- GetTitleClasses() - clases CSS para título
+- GetStatusBadgeVariant() - color del badge de estado
+- GetPriorityBadgeVariant() - color del badge de prioridad
+- HandleStatusToggle() - manejar cambio de estado
+
+ESTRUCTURA SUGERIDA:
+1. Checkbox para completar tarea
+2. Título y descripción
+3. Badges de estado y prioridad
+4. Información del usuario asignado
+5. Botones de acción (Edit, Delete)
+
+TODO: ESTUDIANTE - Implementar el diseño de la tarjeta de tarea aquí
+*@
+
+<div class="p-4 border rounded-lg">
+    <h3 class="font-semibold">@Task.Title</h3>
+
+    @* TODO: ESTUDIANTE - Implementar tarjeta de tarea aquí *@
+    <p class="text-gray-600 text-sm mt-2">
+        Implementar tarjeta de tarea usando Badge y Button
+    </p>
+</div>
+
+

@@ -1,0 +1,29 @@
+@using TaskFlowPro.Web.Services
+@namespace TaskFlowPro.Web.Components.UI
+@inherits NotificationToastBase
+
+<div class="fixed top-4 right-4 z-50 space-y-2">
+    @foreach (var notification in Notifications)
+    {
+        <div class="@GetNotificationClasses(notification.Type) animate-slideInRight"
+             style="animation-delay: @(Notifications.IndexOf(notification) * 100)ms">
+            <div class="flex items-start gap-3">
+                <div class="flex-shrink-0">
+                    <i class="@GetNotificationIcon(notification.Type) @GetIconClasses(notification.Type)"></i>
+                </div>
+
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium">@notification.Message</p>
+                    <p class="text-xs opacity-75 mt-1">@notification.Timestamp.ToString("HH:mm:ss")</p>
+                </div>
+
+                <button @onclick="() => RemoveNotification(notification)"
+                        class="flex-shrink-0 text-white/60 hover:text-white transition-colors duration-200">
+                    <i class="fas fa-times text-xs"></i>
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+

@@ -1,0 +1,15 @@
+# Template Repository Configuration
+# This file helps GitHub understand this is a template repository
+
+name: TaskFlowPro Educational Template
+description: Educational template for learning web development with .NET 9, Blazor Server, and Clean Architecture
+topics:
+  - education
+  - dotnet
+  - blazor
+  - clean-architecture
+  - template
+  - student-project
+  - web-development
+  - csharp
+  - entity-framework

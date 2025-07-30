@@ -1,0 +1,52 @@
+@using TaskFlowPro.Web.Services
+@using TaskFlowPro.Web.Components.UI
+@namespace TaskFlowPro.Web.Features.Users.Components
+@inherits UserFormViewBase
+
+@*
+ESTUDIANTE: Formulario de creación/edición de usuarios
+
+TAREA: Diseñar y implementar el formulario de usuario usando los componentes UI disponibles
+
+COMPONENTES DISPONIBLES:
+- <Card> - Para el contenedor del formulario
+- <Input> - Para los campos del formulario
+- <Button> - Para acciones (Submit, Cancel, Back)
+
+CAMPOS REQUERIDOS:
+- First Name (fas fa-user)
+- Last Name (fas fa-user)
+- Email (fas fa-envelope)
+- Role (dropdown: global_admin, team_leader, team_member)
+- Team (dropdown usando GetTeams())
+
+MÉTODOS DISPONIBLES:
+- HandleSubmit() - para envío del formulario
+- HandleBack() - para volver atrás
+- GetTeams() - para obtener lista de equipos
+
+BINDING DE DATOS:
+- @bind-Value="formData.FirstName"
+- @bind-Value="formData.LastName"
+- @bind-Value="formData.Email"
+- @bind="formData.Role"
+- @bind="formData.TeamId"
+
+ESTADOS:
+- isLoading - para mostrar estado de carga
+- errorMessage - para mostrar errores
+
+TODO: ESTUDIANTE - Implementar el diseño del formulario aquí
+*@
+
+<div class="p-6">
+    <h1 class="text-2xl font-bold mb-6">Create User</h1>
+
+    @* TODO: ESTUDIANTE - Implementar formulario de usuario aquí *@
+    <p class="text-gray-600">
+        Implementar formulario de usuario usando componentes Card, Input y Button
+    </p>
+</div>
+
+
+

@@ -1,0 +1,12 @@
+@using TaskFlowPro.Web.Services
+@namespace TaskFlowPro.Web.Features.Auth.Components
+@inherits AuthFlowBase
+
+@if (CurrentAuthView == "login")
+{
+    <LoginForm OnSwitchToRegister="SwitchToRegister" />
+}
+else
+{
+    <RegisterForm OnSwitchToLogin="SwitchToLogin" />
+}

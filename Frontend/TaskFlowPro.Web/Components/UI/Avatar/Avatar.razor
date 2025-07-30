@@ -1,0 +1,24 @@
+@namespace TaskFlowPro.Web.Components.UI
+@inherits AvatarBase
+
+<div class="@GetAvatarClasses()" @attributes="AdditionalAttributes">
+    @if (!string.IsNullOrEmpty(ImageUrl))
+    {
+        <img src="@ImageUrl" alt="@AltText" class="@GetImageClasses()" />
+    }
+    else if (!string.IsNullOrEmpty(Initials))
+    {
+        <span class="@GetInitialsClasses()">@Initials</span>
+    }
+    else
+    {
+        <i class="@GetDefaultIconClasses()"></i>
+    }
+    
+    @if (ShowOnlineIndicator)
+    {
+        <div class="@GetOnlineIndicatorClasses()"></div>
+    }
+</div>
+
+
